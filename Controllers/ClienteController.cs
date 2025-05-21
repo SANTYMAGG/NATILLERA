@@ -21,11 +21,11 @@ namespace NATILLERA.Controllers
             return objcliente.Insertar();
         }
         [HttpGet]
-        [Route("ConsultarPorDocumento")]
-        public tblCliente ConsultarPorDocumento(string documento)
+        [Route("ConsultarPorID")]
+        public tblCliente ConsultarPorID(int idcliente)
         {
             clsCliente objcliente = new clsCliente();
-            return objcliente.ConsultarPorDcoumento(documento);
+            return objcliente.ConsultarPorID(idcliente);
         }
         [HttpGet]
         [Route("ConsultarTodos")]

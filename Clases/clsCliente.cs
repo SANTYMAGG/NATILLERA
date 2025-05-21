@@ -26,11 +26,12 @@ namespace NATILLERA.Clases
                 return "Error al registrar Cliente" + ex.Message;
             }
         }
-        public tblCliente ConsultarPorDcoumento(string documento)
+        public tblCliente ConsultarPorID(int idcliente)
         {
             try
             {
-                return DBNatillera.tblClientes.FirstOrDefault(c => c.varDocumentoIdentidadUq == documento);
+                tblCliente cliente = DBNatillera.tblClientes.FirstOrDefault(c => c.intIdClientePk == idcliente);
+                return cliente;
             }
             catch (Exception ex)
             {

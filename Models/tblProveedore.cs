@@ -9,6 +9,7 @@
 
 namespace NATILLERA.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     
@@ -23,7 +24,8 @@ namespace NATILLERA.Models
         public int intIdProveedorPk { get; set; }
         public string varNombreProveedor { get; set; }
         public string varEspecialidad { get; set; }
-    
+
+        [JsonIgnore]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblAlquilere> tblAlquileres { get; set; }
     }

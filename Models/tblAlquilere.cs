@@ -9,6 +9,7 @@
 
 namespace NATILLERA.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     
@@ -20,8 +21,11 @@ namespace NATILLERA.Models
         public string varLugar { get; set; }
         public decimal decCosto { get; set; }
         public System.DateTime dtFechaAlquiler { get; set; }
-    
+
+        [JsonIgnore]
         public virtual tblSede tblSede { get; set; }
+        [JsonIgnore]
+
         public virtual tblProveedore tblProveedore { get; set; }
     }
 }

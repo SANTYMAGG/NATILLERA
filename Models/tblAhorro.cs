@@ -9,6 +9,7 @@
 
 namespace NATILLERA.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     
@@ -19,8 +20,10 @@ namespace NATILLERA.Models
         public int intIdSedeFk { get; set; }
         public decimal decMonto { get; set; }
         public System.DateTime dtFechaAhorro { get; set; }
-    
+
+        [JsonIgnore]
         public virtual tblCliente tblCliente { get; set; }
+        [JsonIgnore]
         public virtual tblSede tblSede { get; set; }
     }
 }
