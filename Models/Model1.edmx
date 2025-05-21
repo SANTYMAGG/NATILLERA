@@ -1,0 +1,1329 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="NATILLERAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblAhorros">
+          <Key>
+            <PropertyRef Name="intIdAhorroPk" />
+          </Key>
+          <Property Name="intIdAhorroPk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="intIdClienteFk" Type="int" Nullable="false" />
+          <Property Name="intIdSedeFk" Type="int" Nullable="false" />
+          <Property Name="decMonto" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="dtFechaAhorro" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblAlquileres">
+          <Key>
+            <PropertyRef Name="intIdAlquilerPk" />
+          </Key>
+          <Property Name="intIdAlquilerPk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="intIdSedeFk" Type="int" Nullable="false" />
+          <Property Name="intIdProveedorFk" Type="int" Nullable="false" />
+          <Property Name="varLugar" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="decCosto" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="dtFechaAlquiler" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblAuditoria">
+          <Key>
+            <PropertyRef Name="intIdAuditoriaPk" />
+          </Key>
+          <Property Name="intIdAuditoriaPk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="intIdUsuarioFk" Type="int" Nullable="false" />
+          <Property Name="intIdSedeFk" Type="int" Nullable="false" />
+          <Property Name="varAccion" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="txtDescripcion" Type="text" />
+          <Property Name="dtFechaRegistro" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblClientes">
+          <Key>
+            <PropertyRef Name="intIdClientePk" />
+          </Key>
+          <Property Name="intIdClientePk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="varDocumentoIdentidadUq" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="dtFechaRegistro" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblEventos">
+          <Key>
+            <PropertyRef Name="intIdEventoPk" />
+          </Key>
+          <Property Name="intIdEventoPk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="intIdSedeFk" Type="int" Nullable="false" />
+          <Property Name="varNombreEvento" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="enmTipo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="dtFechaInicio" Type="datetime" Nullable="false" />
+          <Property Name="dtFechaFin" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblLiquidaciones">
+          <Key>
+            <PropertyRef Name="intIdLiquidacionPk" />
+          </Key>
+          <Property Name="intIdLiquidacionPk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="intIdClienteFk" Type="int" Nullable="false" />
+          <Property Name="intIdSedeFk" Type="int" Nullable="false" />
+          <Property Name="decMontoTotal" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="dtFechaLiquidacion" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblPagosPrestamo">
+          <Key>
+            <PropertyRef Name="intIdPagoPk" />
+          </Key>
+          <Property Name="intIdPagoPk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="intIdPrestamoFk" Type="int" Nullable="false" />
+          <Property Name="intIdSedeFk" Type="int" Nullable="false" />
+          <Property Name="decMontoCapital" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="decMontoInteres" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="dtFechaPago" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblParticipantesEventos">
+          <Key>
+            <PropertyRef Name="intIdParticipacionPk" />
+          </Key>
+          <Property Name="intIdParticipacionPk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="intIdEventoFk" Type="int" Nullable="false" />
+          <Property Name="intIdUsuarioFk" Type="int" Nullable="false" />
+          <Property Name="enmRol" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblPrestamos">
+          <Key>
+            <PropertyRef Name="intIdPrestamoPk" />
+          </Key>
+          <Property Name="intIdPrestamoPk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="intIdClienteFk" Type="int" Nullable="false" />
+          <Property Name="intIdUsuarioAprobadorFk" Type="int" Nullable="false" />
+          <Property Name="intIdSedeFk" Type="int" Nullable="false" />
+          <Property Name="decMonto" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="decTasaInteres" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="dtFechaAprobacion" Type="date" Nullable="false" />
+          <Property Name="dtFechaVencimiento" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblProveedores">
+          <Key>
+            <PropertyRef Name="intIdProveedorPk" />
+          </Key>
+          <Property Name="intIdProveedorPk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="varNombreProveedor" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="varEspecialidad" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblSedes">
+          <Key>
+            <PropertyRef Name="intIdSedePk" />
+          </Key>
+          <Property Name="intIdSedePk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="varNombreSede" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="varDireccion" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="intCapacidadMaxima" Type="int" />
+        </EntityType>
+        <EntityType Name="tblTiposTransaccion">
+          <Key>
+            <PropertyRef Name="intIdTipoTransaccionPk" />
+          </Key>
+          <Property Name="intIdTipoTransaccionPk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="varNombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="enmOperacion" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblTokens">
+          <Key>
+            <PropertyRef Name="intIdTokenPk" />
+          </Key>
+          <Property Name="intIdTokenPk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="intIdUsuarioFk" Type="int" Nullable="false" />
+          <Property Name="varToken" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="dtExpiracion" Type="datetime" Nullable="false" />
+          <Property Name="enmTipo" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblTransacciones">
+          <Key>
+            <PropertyRef Name="intIdTransaccionPk" />
+          </Key>
+          <Property Name="intIdTransaccionPk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="intIdClienteFk" Type="int" Nullable="false" />
+          <Property Name="intIdTipoTransaccionFk" Type="int" Nullable="false" />
+          <Property Name="intIdUsuarioRegistroFk" Type="int" Nullable="false" />
+          <Property Name="intIdSedeFk" Type="int" Nullable="false" />
+          <Property Name="decMonto" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="dtFechaOperacion" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblUsuarios">
+          <Key>
+            <PropertyRef Name="intIdUsuarioPk" />
+          </Key>
+          <Property Name="intIdUsuarioPk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="intIdClienteFk" Type="int" Nullable="false" />
+          <Property Name="intIdSedeFk" Type="int" Nullable="false" />
+          <Property Name="varNombreUsuario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="varPasswordHash" Type="char" MaxLength="60" Nullable="false" />
+          <Property Name="enmRol" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__tblAhorro__intId__46E78A0C">
+          <End Role="tblClientes" Type="Self.tblClientes" Multiplicity="1" />
+          <End Role="tblAhorros" Type="Self.tblAhorros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblClientes">
+              <PropertyRef Name="intIdClientePk" />
+            </Principal>
+            <Dependent Role="tblAhorros">
+              <PropertyRef Name="intIdClienteFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblAhorro__intId__47DBAE45">
+          <End Role="tblSedes" Type="Self.tblSedes" Multiplicity="1" />
+          <End Role="tblAhorros" Type="Self.tblAhorros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSedes">
+              <PropertyRef Name="intIdSedePk" />
+            </Principal>
+            <Dependent Role="tblAhorros">
+              <PropertyRef Name="intIdSedeFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblAlquil__intId__628FA481">
+          <End Role="tblSedes" Type="Self.tblSedes" Multiplicity="1" />
+          <End Role="tblAlquileres" Type="Self.tblAlquileres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSedes">
+              <PropertyRef Name="intIdSedePk" />
+            </Principal>
+            <Dependent Role="tblAlquileres">
+              <PropertyRef Name="intIdSedeFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblAlquil__intId__6383C8BA">
+          <End Role="tblProveedores" Type="Self.tblProveedores" Multiplicity="1" />
+          <End Role="tblAlquileres" Type="Self.tblAlquileres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProveedores">
+              <PropertyRef Name="intIdProveedorPk" />
+            </Principal>
+            <Dependent Role="tblAlquileres">
+              <PropertyRef Name="intIdProveedorFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblAudito__intId__6EF57B66">
+          <End Role="tblUsuarios" Type="Self.tblUsuarios" Multiplicity="1" />
+          <End Role="tblAuditoria" Type="Self.tblAuditoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsuarios">
+              <PropertyRef Name="intIdUsuarioPk" />
+            </Principal>
+            <Dependent Role="tblAuditoria">
+              <PropertyRef Name="intIdUsuarioFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblAudito__intId__6FE99F9F">
+          <End Role="tblSedes" Type="Self.tblSedes" Multiplicity="1" />
+          <End Role="tblAuditoria" Type="Self.tblAuditoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSedes">
+              <PropertyRef Name="intIdSedePk" />
+            </Principal>
+            <Dependent Role="tblAuditoria">
+              <PropertyRef Name="intIdSedeFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblEvento__intId__5DCAEF64">
+          <End Role="tblSedes" Type="Self.tblSedes" Multiplicity="1" />
+          <End Role="tblEventos" Type="Self.tblEventos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSedes">
+              <PropertyRef Name="intIdSedePk" />
+            </Principal>
+            <Dependent Role="tblEventos">
+              <PropertyRef Name="intIdSedeFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblLiquid__intId__6A30C649">
+          <End Role="tblClientes" Type="Self.tblClientes" Multiplicity="1" />
+          <End Role="tblLiquidaciones" Type="Self.tblLiquidaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblClientes">
+              <PropertyRef Name="intIdClientePk" />
+            </Principal>
+            <Dependent Role="tblLiquidaciones">
+              <PropertyRef Name="intIdClienteFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblLiquid__intId__6B24EA82">
+          <End Role="tblSedes" Type="Self.tblSedes" Multiplicity="1" />
+          <End Role="tblLiquidaciones" Type="Self.tblLiquidaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSedes">
+              <PropertyRef Name="intIdSedePk" />
+            </Principal>
+            <Dependent Role="tblLiquidaciones">
+              <PropertyRef Name="intIdSedeFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblPagosP__intId__5070F446">
+          <End Role="tblPrestamos" Type="Self.tblPrestamos" Multiplicity="1" />
+          <End Role="tblPagosPrestamo" Type="Self.tblPagosPrestamo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPrestamos">
+              <PropertyRef Name="intIdPrestamoPk" />
+            </Principal>
+            <Dependent Role="tblPagosPrestamo">
+              <PropertyRef Name="intIdPrestamoFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblPagosP__intId__5165187F">
+          <End Role="tblSedes" Type="Self.tblSedes" Multiplicity="1" />
+          <End Role="tblPagosPrestamo" Type="Self.tblPagosPrestamo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSedes">
+              <PropertyRef Name="intIdSedePk" />
+            </Principal>
+            <Dependent Role="tblPagosPrestamo">
+              <PropertyRef Name="intIdSedeFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblPartic__intId__66603565">
+          <End Role="tblEventos" Type="Self.tblEventos" Multiplicity="1" />
+          <End Role="tblParticipantesEventos" Type="Self.tblParticipantesEventos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEventos">
+              <PropertyRef Name="intIdEventoPk" />
+            </Principal>
+            <Dependent Role="tblParticipantesEventos">
+              <PropertyRef Name="intIdEventoFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblPartic__intId__6754599E">
+          <End Role="tblUsuarios" Type="Self.tblUsuarios" Multiplicity="1" />
+          <End Role="tblParticipantesEventos" Type="Self.tblParticipantesEventos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsuarios">
+              <PropertyRef Name="intIdUsuarioPk" />
+            </Principal>
+            <Dependent Role="tblParticipantesEventos">
+              <PropertyRef Name="intIdUsuarioFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblPresta__intId__4AB81AF0">
+          <End Role="tblClientes" Type="Self.tblClientes" Multiplicity="1" />
+          <End Role="tblPrestamos" Type="Self.tblPrestamos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblClientes">
+              <PropertyRef Name="intIdClientePk" />
+            </Principal>
+            <Dependent Role="tblPrestamos">
+              <PropertyRef Name="intIdClienteFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblPresta__intId__4BAC3F29">
+          <End Role="tblUsuarios" Type="Self.tblUsuarios" Multiplicity="1" />
+          <End Role="tblPrestamos" Type="Self.tblPrestamos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsuarios">
+              <PropertyRef Name="intIdUsuarioPk" />
+            </Principal>
+            <Dependent Role="tblPrestamos">
+              <PropertyRef Name="intIdUsuarioAprobadorFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblPresta__intId__4CA06362">
+          <End Role="tblSedes" Type="Self.tblSedes" Multiplicity="1" />
+          <End Role="tblPrestamos" Type="Self.tblPrestamos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSedes">
+              <PropertyRef Name="intIdSedePk" />
+            </Principal>
+            <Dependent Role="tblPrestamos">
+              <PropertyRef Name="intIdSedeFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblTokens__intId__440B1D61">
+          <End Role="tblUsuarios" Type="Self.tblUsuarios" Multiplicity="1" />
+          <End Role="tblTokens" Type="Self.tblTokens" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsuarios">
+              <PropertyRef Name="intIdUsuarioPk" />
+            </Principal>
+            <Dependent Role="tblTokens">
+              <PropertyRef Name="intIdUsuarioFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblTransa__intId__5812160E">
+          <End Role="tblClientes" Type="Self.tblClientes" Multiplicity="1" />
+          <End Role="tblTransacciones" Type="Self.tblTransacciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblClientes">
+              <PropertyRef Name="intIdClientePk" />
+            </Principal>
+            <Dependent Role="tblTransacciones">
+              <PropertyRef Name="intIdClienteFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblTransa__intId__59063A47">
+          <End Role="tblTiposTransaccion" Type="Self.tblTiposTransaccion" Multiplicity="1" />
+          <End Role="tblTransacciones" Type="Self.tblTransacciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTiposTransaccion">
+              <PropertyRef Name="intIdTipoTransaccionPk" />
+            </Principal>
+            <Dependent Role="tblTransacciones">
+              <PropertyRef Name="intIdTipoTransaccionFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblTransa__intId__59FA5E80">
+          <End Role="tblUsuarios" Type="Self.tblUsuarios" Multiplicity="1" />
+          <End Role="tblTransacciones" Type="Self.tblTransacciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsuarios">
+              <PropertyRef Name="intIdUsuarioPk" />
+            </Principal>
+            <Dependent Role="tblTransacciones">
+              <PropertyRef Name="intIdUsuarioRegistroFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblTransa__intId__5AEE82B9">
+          <End Role="tblSedes" Type="Self.tblSedes" Multiplicity="1" />
+          <End Role="tblTransacciones" Type="Self.tblTransacciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSedes">
+              <PropertyRef Name="intIdSedePk" />
+            </Principal>
+            <Dependent Role="tblTransacciones">
+              <PropertyRef Name="intIdSedeFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblUsuari__intId__403A8C7D">
+          <End Role="tblClientes" Type="Self.tblClientes" Multiplicity="1" />
+          <End Role="tblUsuarios" Type="Self.tblUsuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblClientes">
+              <PropertyRef Name="intIdClientePk" />
+            </Principal>
+            <Dependent Role="tblUsuarios">
+              <PropertyRef Name="intIdClienteFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblUsuari__intId__412EB0B6">
+          <End Role="tblSedes" Type="Self.tblSedes" Multiplicity="1" />
+          <End Role="tblUsuarios" Type="Self.tblUsuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSedes">
+              <PropertyRef Name="intIdSedePk" />
+            </Principal>
+            <Dependent Role="tblUsuarios">
+              <PropertyRef Name="intIdSedeFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NATILLERAModelStoreContainer">
+          <EntitySet Name="tblAhorros" EntityType="Self.tblAhorros" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAlquileres" EntityType="Self.tblAlquileres" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAuditoria" EntityType="Self.tblAuditoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblClientes" EntityType="Self.tblClientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblEventos" EntityType="Self.tblEventos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblLiquidaciones" EntityType="Self.tblLiquidaciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPagosPrestamo" EntityType="Self.tblPagosPrestamo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblParticipantesEventos" EntityType="Self.tblParticipantesEventos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPrestamos" EntityType="Self.tblPrestamos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProveedores" EntityType="Self.tblProveedores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSedes" EntityType="Self.tblSedes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTiposTransaccion" EntityType="Self.tblTiposTransaccion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTokens" EntityType="Self.tblTokens" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTransacciones" EntityType="Self.tblTransacciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUsuarios" EntityType="Self.tblUsuarios" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__tblAhorro__intId__46E78A0C" Association="Self.FK__tblAhorro__intId__46E78A0C">
+            <End Role="tblClientes" EntitySet="tblClientes" />
+            <End Role="tblAhorros" EntitySet="tblAhorros" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblAhorro__intId__47DBAE45" Association="Self.FK__tblAhorro__intId__47DBAE45">
+            <End Role="tblSedes" EntitySet="tblSedes" />
+            <End Role="tblAhorros" EntitySet="tblAhorros" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblAlquil__intId__628FA481" Association="Self.FK__tblAlquil__intId__628FA481">
+            <End Role="tblSedes" EntitySet="tblSedes" />
+            <End Role="tblAlquileres" EntitySet="tblAlquileres" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblAlquil__intId__6383C8BA" Association="Self.FK__tblAlquil__intId__6383C8BA">
+            <End Role="tblProveedores" EntitySet="tblProveedores" />
+            <End Role="tblAlquileres" EntitySet="tblAlquileres" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblAudito__intId__6EF57B66" Association="Self.FK__tblAudito__intId__6EF57B66">
+            <End Role="tblUsuarios" EntitySet="tblUsuarios" />
+            <End Role="tblAuditoria" EntitySet="tblAuditoria" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblAudito__intId__6FE99F9F" Association="Self.FK__tblAudito__intId__6FE99F9F">
+            <End Role="tblSedes" EntitySet="tblSedes" />
+            <End Role="tblAuditoria" EntitySet="tblAuditoria" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblEvento__intId__5DCAEF64" Association="Self.FK__tblEvento__intId__5DCAEF64">
+            <End Role="tblSedes" EntitySet="tblSedes" />
+            <End Role="tblEventos" EntitySet="tblEventos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblLiquid__intId__6A30C649" Association="Self.FK__tblLiquid__intId__6A30C649">
+            <End Role="tblClientes" EntitySet="tblClientes" />
+            <End Role="tblLiquidaciones" EntitySet="tblLiquidaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblLiquid__intId__6B24EA82" Association="Self.FK__tblLiquid__intId__6B24EA82">
+            <End Role="tblSedes" EntitySet="tblSedes" />
+            <End Role="tblLiquidaciones" EntitySet="tblLiquidaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblPagosP__intId__5070F446" Association="Self.FK__tblPagosP__intId__5070F446">
+            <End Role="tblPrestamos" EntitySet="tblPrestamos" />
+            <End Role="tblPagosPrestamo" EntitySet="tblPagosPrestamo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblPagosP__intId__5165187F" Association="Self.FK__tblPagosP__intId__5165187F">
+            <End Role="tblSedes" EntitySet="tblSedes" />
+            <End Role="tblPagosPrestamo" EntitySet="tblPagosPrestamo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblPartic__intId__66603565" Association="Self.FK__tblPartic__intId__66603565">
+            <End Role="tblEventos" EntitySet="tblEventos" />
+            <End Role="tblParticipantesEventos" EntitySet="tblParticipantesEventos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblPartic__intId__6754599E" Association="Self.FK__tblPartic__intId__6754599E">
+            <End Role="tblUsuarios" EntitySet="tblUsuarios" />
+            <End Role="tblParticipantesEventos" EntitySet="tblParticipantesEventos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblPresta__intId__4AB81AF0" Association="Self.FK__tblPresta__intId__4AB81AF0">
+            <End Role="tblClientes" EntitySet="tblClientes" />
+            <End Role="tblPrestamos" EntitySet="tblPrestamos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblPresta__intId__4BAC3F29" Association="Self.FK__tblPresta__intId__4BAC3F29">
+            <End Role="tblUsuarios" EntitySet="tblUsuarios" />
+            <End Role="tblPrestamos" EntitySet="tblPrestamos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblPresta__intId__4CA06362" Association="Self.FK__tblPresta__intId__4CA06362">
+            <End Role="tblSedes" EntitySet="tblSedes" />
+            <End Role="tblPrestamos" EntitySet="tblPrestamos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblTokens__intId__440B1D61" Association="Self.FK__tblTokens__intId__440B1D61">
+            <End Role="tblUsuarios" EntitySet="tblUsuarios" />
+            <End Role="tblTokens" EntitySet="tblTokens" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblTransa__intId__5812160E" Association="Self.FK__tblTransa__intId__5812160E">
+            <End Role="tblClientes" EntitySet="tblClientes" />
+            <End Role="tblTransacciones" EntitySet="tblTransacciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblTransa__intId__59063A47" Association="Self.FK__tblTransa__intId__59063A47">
+            <End Role="tblTiposTransaccion" EntitySet="tblTiposTransaccion" />
+            <End Role="tblTransacciones" EntitySet="tblTransacciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblTransa__intId__59FA5E80" Association="Self.FK__tblTransa__intId__59FA5E80">
+            <End Role="tblUsuarios" EntitySet="tblUsuarios" />
+            <End Role="tblTransacciones" EntitySet="tblTransacciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblTransa__intId__5AEE82B9" Association="Self.FK__tblTransa__intId__5AEE82B9">
+            <End Role="tblSedes" EntitySet="tblSedes" />
+            <End Role="tblTransacciones" EntitySet="tblTransacciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblUsuari__intId__403A8C7D" Association="Self.FK__tblUsuari__intId__403A8C7D">
+            <End Role="tblClientes" EntitySet="tblClientes" />
+            <End Role="tblUsuarios" EntitySet="tblUsuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblUsuari__intId__412EB0B6" Association="Self.FK__tblUsuari__intId__412EB0B6">
+            <End Role="tblSedes" EntitySet="tblSedes" />
+            <End Role="tblUsuarios" EntitySet="tblUsuarios" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NATILLERAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblAhorro">
+          <Key>
+            <PropertyRef Name="intIdAhorroPk" />
+          </Key>
+          <Property Name="intIdAhorroPk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="intIdClienteFk" Type="Int32" Nullable="false" />
+          <Property Name="intIdSedeFk" Type="Int32" Nullable="false" />
+          <Property Name="decMonto" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="dtFechaAhorro" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="tblCliente" Relationship="Self.FK__tblAhorro__intId__46E78A0C" FromRole="tblAhorros" ToRole="tblClientes" />
+          <NavigationProperty Name="tblSede" Relationship="Self.FK__tblAhorro__intId__47DBAE45" FromRole="tblAhorros" ToRole="tblSedes" />
+        </EntityType>
+        <EntityType Name="tblAlquilere">
+          <Key>
+            <PropertyRef Name="intIdAlquilerPk" />
+          </Key>
+          <Property Name="intIdAlquilerPk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="intIdSedeFk" Type="Int32" Nullable="false" />
+          <Property Name="intIdProveedorFk" Type="Int32" Nullable="false" />
+          <Property Name="varLugar" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="decCosto" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="dtFechaAlquiler" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="tblSede" Relationship="Self.FK__tblAlquil__intId__628FA481" FromRole="tblAlquileres" ToRole="tblSedes" />
+          <NavigationProperty Name="tblProveedore" Relationship="Self.FK__tblAlquil__intId__6383C8BA" FromRole="tblAlquileres" ToRole="tblProveedores" />
+        </EntityType>
+        <EntityType Name="tblAuditoria">
+          <Key>
+            <PropertyRef Name="intIdAuditoriaPk" />
+          </Key>
+          <Property Name="intIdAuditoriaPk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="intIdUsuarioFk" Type="Int32" Nullable="false" />
+          <Property Name="intIdSedeFk" Type="Int32" Nullable="false" />
+          <Property Name="varAccion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="txtDescripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="dtFechaRegistro" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblUsuario" Relationship="Self.FK__tblAudito__intId__6EF57B66" FromRole="tblAuditoria" ToRole="tblUsuarios" />
+          <NavigationProperty Name="tblSede" Relationship="Self.FK__tblAudito__intId__6FE99F9F" FromRole="tblAuditoria" ToRole="tblSedes" />
+        </EntityType>
+        <EntityType Name="tblCliente">
+          <Key>
+            <PropertyRef Name="intIdClientePk" />
+          </Key>
+          <Property Name="intIdClientePk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="varDocumentoIdentidadUq" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dtFechaRegistro" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblAhorros" Relationship="Self.FK__tblAhorro__intId__46E78A0C" FromRole="tblClientes" ToRole="tblAhorros" />
+          <NavigationProperty Name="tblLiquidaciones" Relationship="Self.FK__tblLiquid__intId__6A30C649" FromRole="tblClientes" ToRole="tblLiquidaciones" />
+          <NavigationProperty Name="tblPrestamos" Relationship="Self.FK__tblPresta__intId__4AB81AF0" FromRole="tblClientes" ToRole="tblPrestamos" />
+          <NavigationProperty Name="tblTransacciones" Relationship="Self.FK__tblTransa__intId__5812160E" FromRole="tblClientes" ToRole="tblTransacciones" />
+          <NavigationProperty Name="tblUsuarios" Relationship="Self.FK__tblUsuari__intId__403A8C7D" FromRole="tblClientes" ToRole="tblUsuarios" />
+        </EntityType>
+        <EntityType Name="tblEvento">
+          <Key>
+            <PropertyRef Name="intIdEventoPk" />
+          </Key>
+          <Property Name="intIdEventoPk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="intIdSedeFk" Type="Int32" Nullable="false" />
+          <Property Name="varNombreEvento" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="enmTipo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dtFechaInicio" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dtFechaFin" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblSede" Relationship="Self.FK__tblEvento__intId__5DCAEF64" FromRole="tblEventos" ToRole="tblSedes" />
+          <NavigationProperty Name="tblParticipantesEventos" Relationship="Self.FK__tblPartic__intId__66603565" FromRole="tblEventos" ToRole="tblParticipantesEventos" />
+        </EntityType>
+        <EntityType Name="tblLiquidacione">
+          <Key>
+            <PropertyRef Name="intIdLiquidacionPk" />
+          </Key>
+          <Property Name="intIdLiquidacionPk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="intIdClienteFk" Type="Int32" Nullable="false" />
+          <Property Name="intIdSedeFk" Type="Int32" Nullable="false" />
+          <Property Name="decMontoTotal" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="dtFechaLiquidacion" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="tblCliente" Relationship="Self.FK__tblLiquid__intId__6A30C649" FromRole="tblLiquidaciones" ToRole="tblClientes" />
+          <NavigationProperty Name="tblSede" Relationship="Self.FK__tblLiquid__intId__6B24EA82" FromRole="tblLiquidaciones" ToRole="tblSedes" />
+        </EntityType>
+        <EntityType Name="tblPagosPrestamo">
+          <Key>
+            <PropertyRef Name="intIdPagoPk" />
+          </Key>
+          <Property Name="intIdPagoPk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="intIdPrestamoFk" Type="Int32" Nullable="false" />
+          <Property Name="intIdSedeFk" Type="Int32" Nullable="false" />
+          <Property Name="decMontoCapital" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="decMontoInteres" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="dtFechaPago" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblPrestamo" Relationship="Self.FK__tblPagosP__intId__5070F446" FromRole="tblPagosPrestamo" ToRole="tblPrestamos" />
+          <NavigationProperty Name="tblSede" Relationship="Self.FK__tblPagosP__intId__5165187F" FromRole="tblPagosPrestamo" ToRole="tblSedes" />
+        </EntityType>
+        <EntityType Name="tblParticipantesEvento">
+          <Key>
+            <PropertyRef Name="intIdParticipacionPk" />
+          </Key>
+          <Property Name="intIdParticipacionPk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="intIdEventoFk" Type="Int32" Nullable="false" />
+          <Property Name="intIdUsuarioFk" Type="Int32" Nullable="false" />
+          <Property Name="enmRol" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblEvento" Relationship="Self.FK__tblPartic__intId__66603565" FromRole="tblParticipantesEventos" ToRole="tblEventos" />
+          <NavigationProperty Name="tblUsuario" Relationship="Self.FK__tblPartic__intId__6754599E" FromRole="tblParticipantesEventos" ToRole="tblUsuarios" />
+        </EntityType>
+        <EntityType Name="tblPrestamo">
+          <Key>
+            <PropertyRef Name="intIdPrestamoPk" />
+          </Key>
+          <Property Name="intIdPrestamoPk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="intIdClienteFk" Type="Int32" Nullable="false" />
+          <Property Name="intIdUsuarioAprobadorFk" Type="Int32" Nullable="false" />
+          <Property Name="intIdSedeFk" Type="Int32" Nullable="false" />
+          <Property Name="decMonto" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="decTasaInteres" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="dtFechaAprobacion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="dtFechaVencimiento" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="tblCliente" Relationship="Self.FK__tblPresta__intId__4AB81AF0" FromRole="tblPrestamos" ToRole="tblClientes" />
+          <NavigationProperty Name="tblPagosPrestamoes" Relationship="Self.FK__tblPagosP__intId__5070F446" FromRole="tblPrestamos" ToRole="tblPagosPrestamo" />
+          <NavigationProperty Name="tblUsuario" Relationship="Self.FK__tblPresta__intId__4BAC3F29" FromRole="tblPrestamos" ToRole="tblUsuarios" />
+          <NavigationProperty Name="tblSede" Relationship="Self.FK__tblPresta__intId__4CA06362" FromRole="tblPrestamos" ToRole="tblSedes" />
+        </EntityType>
+        <EntityType Name="tblProveedore">
+          <Key>
+            <PropertyRef Name="intIdProveedorPk" />
+          </Key>
+          <Property Name="intIdProveedorPk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="varNombreProveedor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="varEspecialidad" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblAlquileres" Relationship="Self.FK__tblAlquil__intId__6383C8BA" FromRole="tblProveedores" ToRole="tblAlquileres" />
+        </EntityType>
+        <EntityType Name="tblSede">
+          <Key>
+            <PropertyRef Name="intIdSedePk" />
+          </Key>
+          <Property Name="intIdSedePk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="varNombreSede" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="varDireccion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="intCapacidadMaxima" Type="Int32" />
+          <NavigationProperty Name="tblAhorros" Relationship="Self.FK__tblAhorro__intId__47DBAE45" FromRole="tblSedes" ToRole="tblAhorros" />
+          <NavigationProperty Name="tblAlquileres" Relationship="Self.FK__tblAlquil__intId__628FA481" FromRole="tblSedes" ToRole="tblAlquileres" />
+          <NavigationProperty Name="tblAuditorias" Relationship="Self.FK__tblAudito__intId__6FE99F9F" FromRole="tblSedes" ToRole="tblAuditoria" />
+          <NavigationProperty Name="tblEventos" Relationship="Self.FK__tblEvento__intId__5DCAEF64" FromRole="tblSedes" ToRole="tblEventos" />
+          <NavigationProperty Name="tblLiquidaciones" Relationship="Self.FK__tblLiquid__intId__6B24EA82" FromRole="tblSedes" ToRole="tblLiquidaciones" />
+          <NavigationProperty Name="tblPagosPrestamoes" Relationship="Self.FK__tblPagosP__intId__5165187F" FromRole="tblSedes" ToRole="tblPagosPrestamo" />
+          <NavigationProperty Name="tblPrestamos" Relationship="Self.FK__tblPresta__intId__4CA06362" FromRole="tblSedes" ToRole="tblPrestamos" />
+          <NavigationProperty Name="tblTransacciones" Relationship="Self.FK__tblTransa__intId__5AEE82B9" FromRole="tblSedes" ToRole="tblTransacciones" />
+          <NavigationProperty Name="tblUsuarios" Relationship="Self.FK__tblUsuari__intId__412EB0B6" FromRole="tblSedes" ToRole="tblUsuarios" />
+        </EntityType>
+        <EntityType Name="tblTiposTransaccion">
+          <Key>
+            <PropertyRef Name="intIdTipoTransaccionPk" />
+          </Key>
+          <Property Name="intIdTipoTransaccionPk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="varNombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="enmOperacion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblTransacciones" Relationship="Self.FK__tblTransa__intId__59063A47" FromRole="tblTiposTransaccion" ToRole="tblTransacciones" />
+        </EntityType>
+        <EntityType Name="tblToken">
+          <Key>
+            <PropertyRef Name="intIdTokenPk" />
+          </Key>
+          <Property Name="intIdTokenPk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="intIdUsuarioFk" Type="Int32" Nullable="false" />
+          <Property Name="varToken" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dtExpiracion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="enmTipo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblUsuario" Relationship="Self.FK__tblTokens__intId__440B1D61" FromRole="tblTokens" ToRole="tblUsuarios" />
+        </EntityType>
+        <EntityType Name="tblTransaccione">
+          <Key>
+            <PropertyRef Name="intIdTransaccionPk" />
+          </Key>
+          <Property Name="intIdTransaccionPk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="intIdClienteFk" Type="Int32" Nullable="false" />
+          <Property Name="intIdTipoTransaccionFk" Type="Int32" Nullable="false" />
+          <Property Name="intIdUsuarioRegistroFk" Type="Int32" Nullable="false" />
+          <Property Name="intIdSedeFk" Type="Int32" Nullable="false" />
+          <Property Name="decMonto" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="dtFechaOperacion" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblCliente" Relationship="Self.FK__tblTransa__intId__5812160E" FromRole="tblTransacciones" ToRole="tblClientes" />
+          <NavigationProperty Name="tblSede" Relationship="Self.FK__tblTransa__intId__5AEE82B9" FromRole="tblTransacciones" ToRole="tblSedes" />
+          <NavigationProperty Name="tblTiposTransaccion" Relationship="Self.FK__tblTransa__intId__59063A47" FromRole="tblTransacciones" ToRole="tblTiposTransaccion" />
+          <NavigationProperty Name="tblUsuario" Relationship="Self.FK__tblTransa__intId__59FA5E80" FromRole="tblTransacciones" ToRole="tblUsuarios" />
+        </EntityType>
+        <EntityType Name="tblUsuario">
+          <Key>
+            <PropertyRef Name="intIdUsuarioPk" />
+          </Key>
+          <Property Name="intIdUsuarioPk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="intIdClienteFk" Type="Int32" Nullable="false" />
+          <Property Name="intIdSedeFk" Type="Int32" Nullable="false" />
+          <Property Name="varNombreUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="varPasswordHash" Type="String" MaxLength="60" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="enmRol" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblAuditorias" Relationship="Self.FK__tblAudito__intId__6EF57B66" FromRole="tblUsuarios" ToRole="tblAuditoria" />
+          <NavigationProperty Name="tblCliente" Relationship="Self.FK__tblUsuari__intId__403A8C7D" FromRole="tblUsuarios" ToRole="tblClientes" />
+          <NavigationProperty Name="tblParticipantesEventos" Relationship="Self.FK__tblPartic__intId__6754599E" FromRole="tblUsuarios" ToRole="tblParticipantesEventos" />
+          <NavigationProperty Name="tblPrestamos" Relationship="Self.FK__tblPresta__intId__4BAC3F29" FromRole="tblUsuarios" ToRole="tblPrestamos" />
+          <NavigationProperty Name="tblSede" Relationship="Self.FK__tblUsuari__intId__412EB0B6" FromRole="tblUsuarios" ToRole="tblSedes" />
+          <NavigationProperty Name="tblTokens" Relationship="Self.FK__tblTokens__intId__440B1D61" FromRole="tblUsuarios" ToRole="tblTokens" />
+          <NavigationProperty Name="tblTransacciones" Relationship="Self.FK__tblTransa__intId__59FA5E80" FromRole="tblUsuarios" ToRole="tblTransacciones" />
+        </EntityType>
+        <Association Name="FK__tblAhorro__intId__46E78A0C">
+          <End Role="tblClientes" Type="Self.tblCliente" Multiplicity="1" />
+          <End Role="tblAhorros" Type="Self.tblAhorro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblClientes">
+              <PropertyRef Name="intIdClientePk" />
+            </Principal>
+            <Dependent Role="tblAhorros">
+              <PropertyRef Name="intIdClienteFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblAhorro__intId__47DBAE45">
+          <End Role="tblSedes" Type="Self.tblSede" Multiplicity="1" />
+          <End Role="tblAhorros" Type="Self.tblAhorro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSedes">
+              <PropertyRef Name="intIdSedePk" />
+            </Principal>
+            <Dependent Role="tblAhorros">
+              <PropertyRef Name="intIdSedeFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblAlquil__intId__628FA481">
+          <End Role="tblSedes" Type="Self.tblSede" Multiplicity="1" />
+          <End Role="tblAlquileres" Type="Self.tblAlquilere" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSedes">
+              <PropertyRef Name="intIdSedePk" />
+            </Principal>
+            <Dependent Role="tblAlquileres">
+              <PropertyRef Name="intIdSedeFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblAlquil__intId__6383C8BA">
+          <End Role="tblProveedores" Type="Self.tblProveedore" Multiplicity="1" />
+          <End Role="tblAlquileres" Type="Self.tblAlquilere" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProveedores">
+              <PropertyRef Name="intIdProveedorPk" />
+            </Principal>
+            <Dependent Role="tblAlquileres">
+              <PropertyRef Name="intIdProveedorFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblAudito__intId__6EF57B66">
+          <End Role="tblUsuarios" Type="Self.tblUsuario" Multiplicity="1" />
+          <End Role="tblAuditoria" Type="Self.tblAuditoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsuarios">
+              <PropertyRef Name="intIdUsuarioPk" />
+            </Principal>
+            <Dependent Role="tblAuditoria">
+              <PropertyRef Name="intIdUsuarioFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblAudito__intId__6FE99F9F">
+          <End Role="tblSedes" Type="Self.tblSede" Multiplicity="1" />
+          <End Role="tblAuditoria" Type="Self.tblAuditoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSedes">
+              <PropertyRef Name="intIdSedePk" />
+            </Principal>
+            <Dependent Role="tblAuditoria">
+              <PropertyRef Name="intIdSedeFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblLiquid__intId__6A30C649">
+          <End Role="tblClientes" Type="Self.tblCliente" Multiplicity="1" />
+          <End Role="tblLiquidaciones" Type="Self.tblLiquidacione" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblClientes">
+              <PropertyRef Name="intIdClientePk" />
+            </Principal>
+            <Dependent Role="tblLiquidaciones">
+              <PropertyRef Name="intIdClienteFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblPresta__intId__4AB81AF0">
+          <End Role="tblClientes" Type="Self.tblCliente" Multiplicity="1" />
+          <End Role="tblPrestamos" Type="Self.tblPrestamo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblClientes">
+              <PropertyRef Name="intIdClientePk" />
+            </Principal>
+            <Dependent Role="tblPrestamos">
+              <PropertyRef Name="intIdClienteFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblTransa__intId__5812160E">
+          <End Role="tblClientes" Type="Self.tblCliente" Multiplicity="1" />
+          <End Role="tblTransacciones" Type="Self.tblTransaccione" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblClientes">
+              <PropertyRef Name="intIdClientePk" />
+            </Principal>
+            <Dependent Role="tblTransacciones">
+              <PropertyRef Name="intIdClienteFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblUsuari__intId__403A8C7D">
+          <End Role="tblClientes" Type="Self.tblCliente" Multiplicity="1" />
+          <End Role="tblUsuarios" Type="Self.tblUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblClientes">
+              <PropertyRef Name="intIdClientePk" />
+            </Principal>
+            <Dependent Role="tblUsuarios">
+              <PropertyRef Name="intIdClienteFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblEvento__intId__5DCAEF64">
+          <End Role="tblSedes" Type="Self.tblSede" Multiplicity="1" />
+          <End Role="tblEventos" Type="Self.tblEvento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSedes">
+              <PropertyRef Name="intIdSedePk" />
+            </Principal>
+            <Dependent Role="tblEventos">
+              <PropertyRef Name="intIdSedeFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblPartic__intId__66603565">
+          <End Role="tblEventos" Type="Self.tblEvento" Multiplicity="1" />
+          <End Role="tblParticipantesEventos" Type="Self.tblParticipantesEvento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEventos">
+              <PropertyRef Name="intIdEventoPk" />
+            </Principal>
+            <Dependent Role="tblParticipantesEventos">
+              <PropertyRef Name="intIdEventoFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblLiquid__intId__6B24EA82">
+          <End Role="tblSedes" Type="Self.tblSede" Multiplicity="1" />
+          <End Role="tblLiquidaciones" Type="Self.tblLiquidacione" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSedes">
+              <PropertyRef Name="intIdSedePk" />
+            </Principal>
+            <Dependent Role="tblLiquidaciones">
+              <PropertyRef Name="intIdSedeFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblPagosP__intId__5070F446">
+          <End Role="tblPrestamos" Type="Self.tblPrestamo" Multiplicity="1" />
+          <End Role="tblPagosPrestamo" Type="Self.tblPagosPrestamo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPrestamos">
+              <PropertyRef Name="intIdPrestamoPk" />
+            </Principal>
+            <Dependent Role="tblPagosPrestamo">
+              <PropertyRef Name="intIdPrestamoFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblPagosP__intId__5165187F">
+          <End Role="tblSedes" Type="Self.tblSede" Multiplicity="1" />
+          <End Role="tblPagosPrestamo" Type="Self.tblPagosPrestamo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSedes">
+              <PropertyRef Name="intIdSedePk" />
+            </Principal>
+            <Dependent Role="tblPagosPrestamo">
+              <PropertyRef Name="intIdSedeFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblPartic__intId__6754599E">
+          <End Role="tblUsuarios" Type="Self.tblUsuario" Multiplicity="1" />
+          <End Role="tblParticipantesEventos" Type="Self.tblParticipantesEvento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsuarios">
+              <PropertyRef Name="intIdUsuarioPk" />
+            </Principal>
+            <Dependent Role="tblParticipantesEventos">
+              <PropertyRef Name="intIdUsuarioFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblPresta__intId__4BAC3F29">
+          <End Role="tblUsuarios" Type="Self.tblUsuario" Multiplicity="1" />
+          <End Role="tblPrestamos" Type="Self.tblPrestamo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsuarios">
+              <PropertyRef Name="intIdUsuarioPk" />
+            </Principal>
+            <Dependent Role="tblPrestamos">
+              <PropertyRef Name="intIdUsuarioAprobadorFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblPresta__intId__4CA06362">
+          <End Role="tblSedes" Type="Self.tblSede" Multiplicity="1" />
+          <End Role="tblPrestamos" Type="Self.tblPrestamo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSedes">
+              <PropertyRef Name="intIdSedePk" />
+            </Principal>
+            <Dependent Role="tblPrestamos">
+              <PropertyRef Name="intIdSedeFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblTransa__intId__5AEE82B9">
+          <End Role="tblSedes" Type="Self.tblSede" Multiplicity="1" />
+          <End Role="tblTransacciones" Type="Self.tblTransaccione" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSedes">
+              <PropertyRef Name="intIdSedePk" />
+            </Principal>
+            <Dependent Role="tblTransacciones">
+              <PropertyRef Name="intIdSedeFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblUsuari__intId__412EB0B6">
+          <End Role="tblSedes" Type="Self.tblSede" Multiplicity="1" />
+          <End Role="tblUsuarios" Type="Self.tblUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSedes">
+              <PropertyRef Name="intIdSedePk" />
+            </Principal>
+            <Dependent Role="tblUsuarios">
+              <PropertyRef Name="intIdSedeFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblTransa__intId__59063A47">
+          <End Role="tblTiposTransaccion" Type="Self.tblTiposTransaccion" Multiplicity="1" />
+          <End Role="tblTransacciones" Type="Self.tblTransaccione" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTiposTransaccion">
+              <PropertyRef Name="intIdTipoTransaccionPk" />
+            </Principal>
+            <Dependent Role="tblTransacciones">
+              <PropertyRef Name="intIdTipoTransaccionFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblTokens__intId__440B1D61">
+          <End Role="tblUsuarios" Type="Self.tblUsuario" Multiplicity="1" />
+          <End Role="tblTokens" Type="Self.tblToken" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsuarios">
+              <PropertyRef Name="intIdUsuarioPk" />
+            </Principal>
+            <Dependent Role="tblTokens">
+              <PropertyRef Name="intIdUsuarioFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblTransa__intId__59FA5E80">
+          <End Role="tblUsuarios" Type="Self.tblUsuario" Multiplicity="1" />
+          <End Role="tblTransacciones" Type="Self.tblTransaccione" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsuarios">
+              <PropertyRef Name="intIdUsuarioPk" />
+            </Principal>
+            <Dependent Role="tblTransacciones">
+              <PropertyRef Name="intIdUsuarioRegistroFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NATILLERAEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblAhorros" EntityType="Self.tblAhorro" />
+          <EntitySet Name="tblAlquileres" EntityType="Self.tblAlquilere" />
+          <EntitySet Name="tblAuditorias" EntityType="Self.tblAuditoria" />
+          <EntitySet Name="tblClientes" EntityType="Self.tblCliente" />
+          <EntitySet Name="tblEventos" EntityType="Self.tblEvento" />
+          <EntitySet Name="tblLiquidaciones" EntityType="Self.tblLiquidacione" />
+          <EntitySet Name="tblPagosPrestamoes" EntityType="Self.tblPagosPrestamo" />
+          <EntitySet Name="tblParticipantesEventos" EntityType="Self.tblParticipantesEvento" />
+          <EntitySet Name="tblPrestamos" EntityType="Self.tblPrestamo" />
+          <EntitySet Name="tblProveedores" EntityType="Self.tblProveedore" />
+          <EntitySet Name="tblSedes" EntityType="Self.tblSede" />
+          <EntitySet Name="tblTiposTransaccions" EntityType="Self.tblTiposTransaccion" />
+          <EntitySet Name="tblTokens" EntityType="Self.tblToken" />
+          <EntitySet Name="tblTransacciones" EntityType="Self.tblTransaccione" />
+          <EntitySet Name="tblUsuarios" EntityType="Self.tblUsuario" />
+          <AssociationSet Name="FK__tblAhorro__intId__46E78A0C" Association="Self.FK__tblAhorro__intId__46E78A0C">
+            <End Role="tblClientes" EntitySet="tblClientes" />
+            <End Role="tblAhorros" EntitySet="tblAhorros" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblAhorro__intId__47DBAE45" Association="Self.FK__tblAhorro__intId__47DBAE45">
+            <End Role="tblSedes" EntitySet="tblSedes" />
+            <End Role="tblAhorros" EntitySet="tblAhorros" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblAlquil__intId__628FA481" Association="Self.FK__tblAlquil__intId__628FA481">
+            <End Role="tblSedes" EntitySet="tblSedes" />
+            <End Role="tblAlquileres" EntitySet="tblAlquileres" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblAlquil__intId__6383C8BA" Association="Self.FK__tblAlquil__intId__6383C8BA">
+            <End Role="tblProveedores" EntitySet="tblProveedores" />
+            <End Role="tblAlquileres" EntitySet="tblAlquileres" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblAudito__intId__6EF57B66" Association="Self.FK__tblAudito__intId__6EF57B66">
+            <End Role="tblUsuarios" EntitySet="tblUsuarios" />
+            <End Role="tblAuditoria" EntitySet="tblAuditorias" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblAudito__intId__6FE99F9F" Association="Self.FK__tblAudito__intId__6FE99F9F">
+            <End Role="tblSedes" EntitySet="tblSedes" />
+            <End Role="tblAuditoria" EntitySet="tblAuditorias" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblLiquid__intId__6A30C649" Association="Self.FK__tblLiquid__intId__6A30C649">
+            <End Role="tblClientes" EntitySet="tblClientes" />
+            <End Role="tblLiquidaciones" EntitySet="tblLiquidaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblPresta__intId__4AB81AF0" Association="Self.FK__tblPresta__intId__4AB81AF0">
+            <End Role="tblClientes" EntitySet="tblClientes" />
+            <End Role="tblPrestamos" EntitySet="tblPrestamos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblTransa__intId__5812160E" Association="Self.FK__tblTransa__intId__5812160E">
+            <End Role="tblClientes" EntitySet="tblClientes" />
+            <End Role="tblTransacciones" EntitySet="tblTransacciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblUsuari__intId__403A8C7D" Association="Self.FK__tblUsuari__intId__403A8C7D">
+            <End Role="tblClientes" EntitySet="tblClientes" />
+            <End Role="tblUsuarios" EntitySet="tblUsuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblEvento__intId__5DCAEF64" Association="Self.FK__tblEvento__intId__5DCAEF64">
+            <End Role="tblSedes" EntitySet="tblSedes" />
+            <End Role="tblEventos" EntitySet="tblEventos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblPartic__intId__66603565" Association="Self.FK__tblPartic__intId__66603565">
+            <End Role="tblEventos" EntitySet="tblEventos" />
+            <End Role="tblParticipantesEventos" EntitySet="tblParticipantesEventos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblLiquid__intId__6B24EA82" Association="Self.FK__tblLiquid__intId__6B24EA82">
+            <End Role="tblSedes" EntitySet="tblSedes" />
+            <End Role="tblLiquidaciones" EntitySet="tblLiquidaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblPagosP__intId__5070F446" Association="Self.FK__tblPagosP__intId__5070F446">
+            <End Role="tblPrestamos" EntitySet="tblPrestamos" />
+            <End Role="tblPagosPrestamo" EntitySet="tblPagosPrestamoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblPagosP__intId__5165187F" Association="Self.FK__tblPagosP__intId__5165187F">
+            <End Role="tblSedes" EntitySet="tblSedes" />
+            <End Role="tblPagosPrestamo" EntitySet="tblPagosPrestamoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblPartic__intId__6754599E" Association="Self.FK__tblPartic__intId__6754599E">
+            <End Role="tblUsuarios" EntitySet="tblUsuarios" />
+            <End Role="tblParticipantesEventos" EntitySet="tblParticipantesEventos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblPresta__intId__4BAC3F29" Association="Self.FK__tblPresta__intId__4BAC3F29">
+            <End Role="tblUsuarios" EntitySet="tblUsuarios" />
+            <End Role="tblPrestamos" EntitySet="tblPrestamos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblPresta__intId__4CA06362" Association="Self.FK__tblPresta__intId__4CA06362">
+            <End Role="tblSedes" EntitySet="tblSedes" />
+            <End Role="tblPrestamos" EntitySet="tblPrestamos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblTransa__intId__5AEE82B9" Association="Self.FK__tblTransa__intId__5AEE82B9">
+            <End Role="tblSedes" EntitySet="tblSedes" />
+            <End Role="tblTransacciones" EntitySet="tblTransacciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblUsuari__intId__412EB0B6" Association="Self.FK__tblUsuari__intId__412EB0B6">
+            <End Role="tblSedes" EntitySet="tblSedes" />
+            <End Role="tblUsuarios" EntitySet="tblUsuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblTransa__intId__59063A47" Association="Self.FK__tblTransa__intId__59063A47">
+            <End Role="tblTiposTransaccion" EntitySet="tblTiposTransaccions" />
+            <End Role="tblTransacciones" EntitySet="tblTransacciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblTokens__intId__440B1D61" Association="Self.FK__tblTokens__intId__440B1D61">
+            <End Role="tblUsuarios" EntitySet="tblUsuarios" />
+            <End Role="tblTokens" EntitySet="tblTokens" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblTransa__intId__59FA5E80" Association="Self.FK__tblTransa__intId__59FA5E80">
+            <End Role="tblUsuarios" EntitySet="tblUsuarios" />
+            <End Role="tblTransacciones" EntitySet="tblTransacciones" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NATILLERAModelStoreContainer" CdmEntityContainer="NATILLERAEntities">
+          <EntitySetMapping Name="tblAhorros">
+            <EntityTypeMapping TypeName="NATILLERAModel.tblAhorro">
+              <MappingFragment StoreEntitySet="tblAhorros">
+                <ScalarProperty Name="intIdAhorroPk" ColumnName="intIdAhorroPk" />
+                <ScalarProperty Name="intIdClienteFk" ColumnName="intIdClienteFk" />
+                <ScalarProperty Name="intIdSedeFk" ColumnName="intIdSedeFk" />
+                <ScalarProperty Name="decMonto" ColumnName="decMonto" />
+                <ScalarProperty Name="dtFechaAhorro" ColumnName="dtFechaAhorro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAlquileres">
+            <EntityTypeMapping TypeName="NATILLERAModel.tblAlquilere">
+              <MappingFragment StoreEntitySet="tblAlquileres">
+                <ScalarProperty Name="intIdAlquilerPk" ColumnName="intIdAlquilerPk" />
+                <ScalarProperty Name="intIdSedeFk" ColumnName="intIdSedeFk" />
+                <ScalarProperty Name="intIdProveedorFk" ColumnName="intIdProveedorFk" />
+                <ScalarProperty Name="varLugar" ColumnName="varLugar" />
+                <ScalarProperty Name="decCosto" ColumnName="decCosto" />
+                <ScalarProperty Name="dtFechaAlquiler" ColumnName="dtFechaAlquiler" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAuditorias">
+            <EntityTypeMapping TypeName="NATILLERAModel.tblAuditoria">
+              <MappingFragment StoreEntitySet="tblAuditoria">
+                <ScalarProperty Name="intIdAuditoriaPk" ColumnName="intIdAuditoriaPk" />
+                <ScalarProperty Name="intIdUsuarioFk" ColumnName="intIdUsuarioFk" />
+                <ScalarProperty Name="intIdSedeFk" ColumnName="intIdSedeFk" />
+                <ScalarProperty Name="varAccion" ColumnName="varAccion" />
+                <ScalarProperty Name="txtDescripcion" ColumnName="txtDescripcion" />
+                <ScalarProperty Name="dtFechaRegistro" ColumnName="dtFechaRegistro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblClientes">
+            <EntityTypeMapping TypeName="NATILLERAModel.tblCliente">
+              <MappingFragment StoreEntitySet="tblClientes">
+                <ScalarProperty Name="intIdClientePk" ColumnName="intIdClientePk" />
+                <ScalarProperty Name="varDocumentoIdentidadUq" ColumnName="varDocumentoIdentidadUq" />
+                <ScalarProperty Name="dtFechaRegistro" ColumnName="dtFechaRegistro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblEventos">
+            <EntityTypeMapping TypeName="NATILLERAModel.tblEvento">
+              <MappingFragment StoreEntitySet="tblEventos">
+                <ScalarProperty Name="intIdEventoPk" ColumnName="intIdEventoPk" />
+                <ScalarProperty Name="intIdSedeFk" ColumnName="intIdSedeFk" />
+                <ScalarProperty Name="varNombreEvento" ColumnName="varNombreEvento" />
+                <ScalarProperty Name="enmTipo" ColumnName="enmTipo" />
+                <ScalarProperty Name="dtFechaInicio" ColumnName="dtFechaInicio" />
+                <ScalarProperty Name="dtFechaFin" ColumnName="dtFechaFin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblLiquidaciones">
+            <EntityTypeMapping TypeName="NATILLERAModel.tblLiquidacione">
+              <MappingFragment StoreEntitySet="tblLiquidaciones">
+                <ScalarProperty Name="intIdLiquidacionPk" ColumnName="intIdLiquidacionPk" />
+                <ScalarProperty Name="intIdClienteFk" ColumnName="intIdClienteFk" />
+                <ScalarProperty Name="intIdSedeFk" ColumnName="intIdSedeFk" />
+                <ScalarProperty Name="decMontoTotal" ColumnName="decMontoTotal" />
+                <ScalarProperty Name="dtFechaLiquidacion" ColumnName="dtFechaLiquidacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPagosPrestamoes">
+            <EntityTypeMapping TypeName="NATILLERAModel.tblPagosPrestamo">
+              <MappingFragment StoreEntitySet="tblPagosPrestamo">
+                <ScalarProperty Name="intIdPagoPk" ColumnName="intIdPagoPk" />
+                <ScalarProperty Name="intIdPrestamoFk" ColumnName="intIdPrestamoFk" />
+                <ScalarProperty Name="intIdSedeFk" ColumnName="intIdSedeFk" />
+                <ScalarProperty Name="decMontoCapital" ColumnName="decMontoCapital" />
+                <ScalarProperty Name="decMontoInteres" ColumnName="decMontoInteres" />
+                <ScalarProperty Name="dtFechaPago" ColumnName="dtFechaPago" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblParticipantesEventos">
+            <EntityTypeMapping TypeName="NATILLERAModel.tblParticipantesEvento">
+              <MappingFragment StoreEntitySet="tblParticipantesEventos">
+                <ScalarProperty Name="intIdParticipacionPk" ColumnName="intIdParticipacionPk" />
+                <ScalarProperty Name="intIdEventoFk" ColumnName="intIdEventoFk" />
+                <ScalarProperty Name="intIdUsuarioFk" ColumnName="intIdUsuarioFk" />
+                <ScalarProperty Name="enmRol" ColumnName="enmRol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPrestamos">
+            <EntityTypeMapping TypeName="NATILLERAModel.tblPrestamo">
+              <MappingFragment StoreEntitySet="tblPrestamos">
+                <ScalarProperty Name="intIdPrestamoPk" ColumnName="intIdPrestamoPk" />
+                <ScalarProperty Name="intIdClienteFk" ColumnName="intIdClienteFk" />
+                <ScalarProperty Name="intIdUsuarioAprobadorFk" ColumnName="intIdUsuarioAprobadorFk" />
+                <ScalarProperty Name="intIdSedeFk" ColumnName="intIdSedeFk" />
+                <ScalarProperty Name="decMonto" ColumnName="decMonto" />
+                <ScalarProperty Name="decTasaInteres" ColumnName="decTasaInteres" />
+                <ScalarProperty Name="dtFechaAprobacion" ColumnName="dtFechaAprobacion" />
+                <ScalarProperty Name="dtFechaVencimiento" ColumnName="dtFechaVencimiento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProveedores">
+            <EntityTypeMapping TypeName="NATILLERAModel.tblProveedore">
+              <MappingFragment StoreEntitySet="tblProveedores">
+                <ScalarProperty Name="intIdProveedorPk" ColumnName="intIdProveedorPk" />
+                <ScalarProperty Name="varNombreProveedor" ColumnName="varNombreProveedor" />
+                <ScalarProperty Name="varEspecialidad" ColumnName="varEspecialidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSedes">
+            <EntityTypeMapping TypeName="NATILLERAModel.tblSede">
+              <MappingFragment StoreEntitySet="tblSedes">
+                <ScalarProperty Name="intIdSedePk" ColumnName="intIdSedePk" />
+                <ScalarProperty Name="varNombreSede" ColumnName="varNombreSede" />
+                <ScalarProperty Name="varDireccion" ColumnName="varDireccion" />
+                <ScalarProperty Name="intCapacidadMaxima" ColumnName="intCapacidadMaxima" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTiposTransaccions">
+            <EntityTypeMapping TypeName="NATILLERAModel.tblTiposTransaccion">
+              <MappingFragment StoreEntitySet="tblTiposTransaccion">
+                <ScalarProperty Name="intIdTipoTransaccionPk" ColumnName="intIdTipoTransaccionPk" />
+                <ScalarProperty Name="varNombre" ColumnName="varNombre" />
+                <ScalarProperty Name="enmOperacion" ColumnName="enmOperacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTokens">
+            <EntityTypeMapping TypeName="NATILLERAModel.tblToken">
+              <MappingFragment StoreEntitySet="tblTokens">
+                <ScalarProperty Name="intIdTokenPk" ColumnName="intIdTokenPk" />
+                <ScalarProperty Name="intIdUsuarioFk" ColumnName="intIdUsuarioFk" />
+                <ScalarProperty Name="varToken" ColumnName="varToken" />
+                <ScalarProperty Name="dtExpiracion" ColumnName="dtExpiracion" />
+                <ScalarProperty Name="enmTipo" ColumnName="enmTipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTransacciones">
+            <EntityTypeMapping TypeName="NATILLERAModel.tblTransaccione">
+              <MappingFragment StoreEntitySet="tblTransacciones">
+                <ScalarProperty Name="intIdTransaccionPk" ColumnName="intIdTransaccionPk" />
+                <ScalarProperty Name="intIdClienteFk" ColumnName="intIdClienteFk" />
+                <ScalarProperty Name="intIdTipoTransaccionFk" ColumnName="intIdTipoTransaccionFk" />
+                <ScalarProperty Name="intIdUsuarioRegistroFk" ColumnName="intIdUsuarioRegistroFk" />
+                <ScalarProperty Name="intIdSedeFk" ColumnName="intIdSedeFk" />
+                <ScalarProperty Name="decMonto" ColumnName="decMonto" />
+                <ScalarProperty Name="dtFechaOperacion" ColumnName="dtFechaOperacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUsuarios">
+            <EntityTypeMapping TypeName="NATILLERAModel.tblUsuario">
+              <MappingFragment StoreEntitySet="tblUsuarios">
+                <ScalarProperty Name="intIdUsuarioPk" ColumnName="intIdUsuarioPk" />
+                <ScalarProperty Name="intIdClienteFk" ColumnName="intIdClienteFk" />
+                <ScalarProperty Name="intIdSedeFk" ColumnName="intIdSedeFk" />
+                <ScalarProperty Name="varNombreUsuario" ColumnName="varNombreUsuario" />
+                <ScalarProperty Name="varPasswordHash" ColumnName="varPasswordHash" />
+                <ScalarProperty Name="enmRol" ColumnName="enmRol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

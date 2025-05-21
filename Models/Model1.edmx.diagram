@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9e0f434384f04c9dad7a623c283dce1b" Name="Diagram1" ZoomLevel="67">
+        <EntityTypeShape EntityType="NATILLERAModel.tblAhorro" Width="1.5" PointX="3" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NATILLERAModel.tblAlquilere" Width="1.5" PointX="6" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NATILLERAModel.tblAuditoria" Width="1.5" PointX="3" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NATILLERAModel.tblCliente" Width="1.5" PointX="6.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NATILLERAModel.tblEvento" Width="1.5" PointX="3" PointY="26.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NATILLERAModel.tblLiquidacione" Width="1.5" PointX="3" PointY="20.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NATILLERAModel.tblPagosPrestamo" Width="1.5" PointX="6" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NATILLERAModel.tblParticipantesEvento" Width="1.5" PointX="5.25" PointY="26.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NATILLERAModel.tblPrestamo" Width="1.5" PointX="6" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NATILLERAModel.tblProveedore" Width="1.5" PointX="3.75" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="NATILLERAModel.tblSede" Width="1.5" PointX="0.75" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NATILLERAModel.tblTiposTransaccion" Width="1.5" PointX="6.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="NATILLERAModel.tblToken" Width="1.5" PointX="11.25" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NATILLERAModel.tblTransaccione" Width="1.5" PointX="9" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NATILLERAModel.tblUsuario" Width="1.5" PointX="9" PointY="11.125" IsExpanded="true" />
+        <AssociationConnector Association="NATILLERAModel.FK__tblAhorro__intId__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="NATILLERAModel.FK__tblAhorro__intId__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="NATILLERAModel.FK__tblAlquil__intId__628FA481" ManuallyRouted="false" />
+        <AssociationConnector Association="NATILLERAModel.FK__tblAlquil__intId__6383C8BA" ManuallyRouted="false" />
+        <AssociationConnector Association="NATILLERAModel.FK__tblAudito__intId__6EF57B66" ManuallyRouted="false" />
+        <AssociationConnector Association="NATILLERAModel.FK__tblAudito__intId__6FE99F9F" ManuallyRouted="false" />
+        <AssociationConnector Association="NATILLERAModel.FK__tblLiquid__intId__6A30C649" ManuallyRouted="false" />
+        <AssociationConnector Association="NATILLERAModel.FK__tblPresta__intId__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="NATILLERAModel.FK__tblTransa__intId__5812160E" ManuallyRouted="false" />
+        <AssociationConnector Association="NATILLERAModel.FK__tblUsuari__intId__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="NATILLERAModel.FK__tblEvento__intId__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="NATILLERAModel.FK__tblPartic__intId__66603565" ManuallyRouted="false" />
+        <AssociationConnector Association="NATILLERAModel.FK__tblLiquid__intId__6B24EA82" ManuallyRouted="false" />
+        <AssociationConnector Association="NATILLERAModel.FK__tblPagosP__intId__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="NATILLERAModel.FK__tblPagosP__intId__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="NATILLERAModel.FK__tblPartic__intId__6754599E" ManuallyRouted="false" />
+        <AssociationConnector Association="NATILLERAModel.FK__tblPresta__intId__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="NATILLERAModel.FK__tblPresta__intId__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="NATILLERAModel.FK__tblTransa__intId__5AEE82B9" ManuallyRouted="false" />
+        <AssociationConnector Association="NATILLERAModel.FK__tblUsuari__intId__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="NATILLERAModel.FK__tblTransa__intId__59063A47" ManuallyRouted="false" />
+        <AssociationConnector Association="NATILLERAModel.FK__tblTokens__intId__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="NATILLERAModel.FK__tblTransa__intId__59FA5E80" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
