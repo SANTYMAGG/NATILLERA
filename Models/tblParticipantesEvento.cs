@@ -9,7 +9,6 @@
 
 namespace NATILLERA.Models
 {
-    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     
@@ -19,10 +18,8 @@ namespace NATILLERA.Models
         public int intIdEventoFk { get; set; }
         public int intIdUsuarioFk { get; set; }
         public string enmRol { get; set; }
-
-        [JsonIgnore]
+    
         public virtual tblEvento tblEvento { get; set; }
-        [JsonIgnore]
         public virtual tblUsuario tblUsuario { get; set; }
     }
 }

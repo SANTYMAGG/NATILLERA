@@ -9,7 +9,6 @@
 
 namespace NATILLERA.Models
 {
-    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     
@@ -29,15 +28,11 @@ namespace NATILLERA.Models
         public decimal decTasaInteres { get; set; }
         public System.DateTime dtFechaAprobacion { get; set; }
         public System.DateTime dtFechaVencimiento { get; set; }
-
-        [JsonIgnore]
+    
         public virtual tblCliente tblCliente { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        [JsonIgnore]
         public virtual ICollection<tblPagosPrestamo> tblPagosPrestamoes { get; set; }
-        [JsonIgnore]
         public virtual tblUsuario tblUsuario { get; set; }
-        [JsonIgnore]
         public virtual tblSede tblSede { get; set; }
     }
 }

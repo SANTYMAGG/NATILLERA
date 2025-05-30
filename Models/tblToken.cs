@@ -9,7 +9,6 @@
 
 namespace NATILLERA.Models
 {
-    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     
@@ -20,8 +19,7 @@ namespace NATILLERA.Models
         public string varToken { get; set; }
         public System.DateTime dtExpiracion { get; set; }
         public string enmTipo { get; set; }
-
-        [JsonIgnore]
+    
         public virtual tblUsuario tblUsuario { get; set; }
     }
 }

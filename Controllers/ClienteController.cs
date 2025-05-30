@@ -35,5 +35,20 @@ namespace NATILLERA.Controllers
             return objPrendas.Listar();
 
         }
+        [HttpPut]
+        [Route("Actualizar")]
+        public string Actualizar([FromBody] tblCliente cliente)
+        {
+            clsCliente objcliente = new clsCliente();
+            objcliente.Cliente = cliente;
+            return objcliente.ActualizarCliente();
+        }
+        [HttpDelete]
+        [Route("Eliminar")]
+        public string Eliminar(int idcliente)
+        {
+            clsCliente objcliente = new clsCliente();
+            return objcliente.EliminarCliente(idcliente);
+        }
     }
 }

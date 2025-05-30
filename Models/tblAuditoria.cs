@@ -9,7 +9,6 @@
 
 namespace NATILLERA.Models
 {
-    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     
@@ -21,10 +20,8 @@ namespace NATILLERA.Models
         public string varAccion { get; set; }
         public string txtDescripcion { get; set; }
         public Nullable<System.DateTime> dtFechaRegistro { get; set; }
-        
-        [JsonIgnore]
+    
         public virtual tblUsuario tblUsuario { get; set; }
-        [JsonIgnore]
         public virtual tblSede tblSede { get; set; }
     }
 }
