@@ -12,11 +12,11 @@
         <EntityTypeShape EntityType="NATILLERAModel.tblEvento" Width="1.5" PointX="3" PointY="26.25" IsExpanded="true" />
         <EntityTypeShape EntityType="NATILLERAModel.tblLiquidacione" Width="1.5" PointX="3" PointY="20.625" IsExpanded="true" />
         <EntityTypeShape EntityType="NATILLERAModel.tblPagosPrestamo" Width="1.5" PointX="6" PointY="12.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="NATILLERAModel.tblParticipantesEvento" Width="1.5" PointX="5.25" PointY="26.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NATILLERAModel.tblParticipantesEvento" Width="2.25" PointX="5.25" PointY="26.5" IsExpanded="true" />
         <EntityTypeShape EntityType="NATILLERAModel.tblPrestamo" Width="1.5" PointX="6" PointY="20.125" IsExpanded="true" />
         <EntityTypeShape EntityType="NATILLERAModel.tblProveedore" Width="1.5" PointX="3.75" PointY="10" IsExpanded="true" />
         <EntityTypeShape EntityType="NATILLERAModel.tblSede" Width="1.5" PointX="0.75" PointY="16.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="NATILLERAModel.tblTiposTransaccion" Width="1.5" PointX="6.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="NATILLERAModel.tblTiposTransaccion" Width="2" PointX="6.75" PointY="6" IsExpanded="true" />
         <EntityTypeShape EntityType="NATILLERAModel.tblToken" Width="1.5" PointX="11.25" PointY="11.75" IsExpanded="true" />
         <EntityTypeShape EntityType="NATILLERAModel.tblTransaccione" Width="1.5" PointX="9" PointY="16.25" IsExpanded="true" />
         <EntityTypeShape EntityType="NATILLERAModel.tblUsuario" Width="1.5" PointX="9" PointY="11.125" IsExpanded="true" />

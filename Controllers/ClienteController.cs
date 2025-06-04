@@ -6,9 +6,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace NATILLERA.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("api/cliente")]
     public class ClienteController : ApiController
     {
@@ -29,10 +31,10 @@ namespace NATILLERA.Controllers
         }
         [HttpGet]
         [Route("ConsultarTodos")]
-        public  List<tblCliente> ConsultarTodasLasPrenda()
+        public  List<tblCliente> ConsultarTodosClientes()
         {
-            clsCliente objPrendas = new clsCliente();
-            var x = objPrendas.Listar();
+            clsCliente objCliente = new clsCliente();
+            var x = objCliente.Listar();
             return x;
 
         }
