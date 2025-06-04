@@ -29,10 +29,11 @@ namespace NATILLERA.Controllers
         }
         [HttpGet]
         [Route("ConsultarTodos")]
-        public List<tblCliente> ConsultarTodasLasPrenda()
+        public  List<tblCliente> ConsultarTodasLasPrenda()
         {
             clsCliente objPrendas = new clsCliente();
-            return objPrendas.Listar();
+            var x = objPrendas.Listar();
+            return x;
 
         }
         [HttpPut]
