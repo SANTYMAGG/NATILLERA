@@ -12,6 +12,7 @@ namespace NATILLERA.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("api/cliente")]
+
     public class ClienteController : ApiController
     {
         [HttpPost]
@@ -31,9 +32,11 @@ namespace NATILLERA.Controllers
         }
         [HttpGet]
         [Route("ConsultarTodos")]
-        public  List<tblCliente> ConsultarTodosClientes()
+
+        public List<tblCliente> ConsultarTodos()
+
         {
-            clsCliente objCliente = new clsCliente();
+            clsCliente objCliente = new clsCliente();  // ✅
             var x = objCliente.Listar();
             return x;
 
@@ -53,5 +56,14 @@ namespace NATILLERA.Controllers
             clsCliente objcliente = new clsCliente();
             return objcliente.EliminarCliente(idcliente);
         }
+        [HttpGet]
+        [Route("LlenarCombo")]
+        public List<tblCliente> LlenarCombo()
+        {
+            clsCliente cliente = new clsCliente();
+            return cliente.LlenarCombo();
+        }
+
+
     }
 }

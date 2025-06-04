@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace NATILLERA
 {
@@ -10,17 +11,18 @@ namespace NATILLERA
     {
         public static void Register(HttpConfiguration config)
         {
-            // Web API configuration and services
+            // HABILITAR CORS PARA TODOS LOS ORÍGENES (PRUEBAS)
+            var cors = new EnableCorsAttribute("*", "*", "*");
+            config.EnableCors(cors);
 
-            // Web API routes
+            // Resto de configuración
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
+                routeTemplate: "api/{controller}/{action}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
-
         }
     }
 }

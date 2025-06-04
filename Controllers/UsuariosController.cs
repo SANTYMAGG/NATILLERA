@@ -15,13 +15,14 @@ namespace NATILLERA.Controllers
     public class UsuariosController : ApiController
     {
         [HttpPost]
-        [Route("insertar")]
+        [Route("Insertar")]
         public string Insertar([FromBody] tblUsuario usuario)
         {
             clsUsuarios objUsuarios = new clsUsuarios();
             objUsuarios.Usuario = usuario;
             return objUsuarios.Insertar();
         }
+
         [HttpGet]
         [Route("ConsultarPorID")]
         public tblUsuario ConsultarPorID(int idUsuario)
@@ -29,13 +30,16 @@ namespace NATILLERA.Controllers
             clsUsuarios objUsuarios = new clsUsuarios();
             return objUsuarios.ConsultarPorID(idUsuario);
         }
+
         [HttpGet]
-        [Route("ConsultarTodos")]
+        [Route("ListadoUsuarios")]
         public List<tblUsuario> ConsultarTodosLosUsuarios()
         {
             clsUsuarios objUsuarios = new clsUsuarios();
             return objUsuarios.Listar();
         }
+
+
         [HttpPut]
         [Route("Actualizar")]
         public string Actualizar([FromBody] tblUsuario usuario)
@@ -44,12 +48,15 @@ namespace NATILLERA.Controllers
             objUsuarios.Usuario = usuario;
             return objUsuarios.ActualizarUsuario();
         }
+
         [HttpDelete]
-        [Route("Eliminar")]
+        [Route("Eliminar/{idUsuario}")]
         public string Eliminar(int idUsuario)
         {
             clsUsuarios objUsuarios = new clsUsuarios();
             return objUsuarios.EliminarUsuario(idUsuario);
         }
+
+
     }
 }

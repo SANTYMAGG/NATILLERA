@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
+using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
@@ -90,5 +91,13 @@ namespace NATILLERA.Clases
                 return "Error al eliminar cliente: " + ex.Message;
             }
         }
+        public List<tblCliente> LlenarCombo()
+        {
+            return DBNatillera.tblClientes
+
+                .ToList();
+        }
+    }
+
     }
 }
