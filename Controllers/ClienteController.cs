@@ -32,11 +32,11 @@ namespace NATILLERA.Controllers
         }
         [HttpGet]
         [Route("ConsultarTodos")]
+
         public List<tblCliente> ConsultarTodos()
 
         {
             clsCliente objCliente = new clsCliente();  // ✅
-
             var x = objCliente.Listar();
             return x;
 
