@@ -17,6 +17,7 @@ namespace NATILLERA.Controllers
     public class AutorizacionController : ApiController
     {
         private clsAutorizacion clsAutorizacion = new clsAutorizacion();
+        private clsUsuarios clsUsuarios = new clsUsuarios();
 
         [HttpPost]
         [Route("acceso")]
@@ -28,7 +29,8 @@ namespace NATILLERA.Controllers
             if (clsAutorizacion.ValidacionUsuario(loginModel))
             {
                 var token = clsAutorizacion.GenerateToken(loginModel.Usuario);
-                return Ok(new { Token = token });
+                tblUsuario tblUsuario = clsUsuarios.ConsultarNombreUsuario(loginModel.Usuario);
+                return Ok(new { Token = token , Usuario = tblUsuario });
             }
 
             return Unauthorized();

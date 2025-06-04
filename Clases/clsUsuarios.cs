@@ -38,6 +38,19 @@ namespace NATILLERA.Clases
                 throw new Exception("Error al consultar Usuario: " + ex.Message);
             }
         }
+
+        public tblUsuario ConsultarNombreUsuario(string nombreUsuario)
+        {
+            try
+            {
+                tblUsuario usuario = DBNatillera.tblUsuarios.FirstOrDefault(c => c.varNombreUsuario == nombreUsuario);
+                return usuario;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al consultar Usuario: " + ex.Message);
+            }
+        }
         public List<tblUsuario> Listar()
         {
             try
