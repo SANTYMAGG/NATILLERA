@@ -1,4 +1,5 @@
-﻿using NATILLERA.Models;
+﻿using NATILLERA.Entidades;
+using NATILLERA.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
@@ -88,6 +89,28 @@ namespace NATILLERA.Clases
             catch (Exception ex)
             {
                 return "Error al eliminar Usuario: " + ex.Message;
+            }
+        }
+
+        public string RecuperarContraseña(AccesoUsuario acceso)
+        {
+            try
+            {
+                var usuario = DBNatillera.tblUsuarios.FirstOrDefault(c => c.varNombreUsuario == acceso.Usuario);
+                if (usuario != null)
+                {
+                    usuario.varPasswordHash = acceso.Contraseña;
+                    DBNatillera.SaveChanges();
+                    return "Contraseña actualizada";
+                }
+                else
+                {
+                    return "Usuario no encontrado";
+                }
+            }
+            catch (Exception ex)
+            {
+                return "Error al cambiar contraseña Usuario: " + ex.Message;
             }
         }
     }

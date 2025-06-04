@@ -1,4 +1,5 @@
 ﻿using NATILLERA.Clases;
+using NATILLERA.Entidades;
 using NATILLERA.Models;
 using System;
 using System.Collections.Generic;
@@ -56,7 +57,6 @@ namespace NATILLERA.Controllers
             clsUsuarios objUsuarios = new clsUsuarios();
             return objUsuarios.EliminarUsuario(idUsuario);
         }
-
 
     }
 }

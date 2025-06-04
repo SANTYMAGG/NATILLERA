@@ -33,5 +33,13 @@ namespace NATILLERA.Controllers
 
             return Unauthorized();
         }
+
+        [HttpPost]
+        [Route("recuperarContraseña")]
+        public string RecuperarContraseña([FromBody] AccesoUsuario usuario)
+        {
+            clsUsuarios objUsuarios = new clsUsuarios();
+            return objUsuarios.RecuperarContraseña(usuario);
+        }
     }
 }
