@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using NATILLERA.Clases;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using AuthorizeAttribute = System.Web.Http.AuthorizeAttribute;
 
 namespace NATILLERA
 {
@@ -18,6 +16,16 @@ namespace NATILLERA
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            ConfigureAuth(GlobalConfiguration.Configuration);
+
+        }
+
+        public void ConfigureAuth(HttpConfiguration config)
+        {
+            var jwtAuthManager = new clsAutorizacion();
+            config.Filters.Add(new AuthorizeAttribute());
+            config.MessageHandlers.Add(new clsJwtBearerAutorizacion(jwtAuthManager));
         }
     }
 }

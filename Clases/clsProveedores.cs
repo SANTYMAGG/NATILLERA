@@ -70,19 +70,31 @@ namespace NATILLERA.Clases
         {
             try
             {
-                var proveedor = DBNatillera.tblProveedores.FirstOrDefault(c => c.intIdProveedorPk == idProveedor);
+                var proveedor = DBNatillera.tblProveedores
+                    .Include("tblAlquileres")
+                    .FirstOrDefault(c => c.intIdProveedorPk == idProveedor);
+
                 if (proveedor == null)
                 {
                     return "Proveedor no encontrado";
                 }
+
+                if (proveedor.tblAlquileres.Any())
+                {
+                    DBNatillera.tblAlquileres.RemoveRange(proveedor.tblAlquileres.ToList());
+                }
+
                 DBNatillera.tblProveedores.Remove(proveedor);
                 DBNatillera.SaveChanges();
+
                 return "Proveedor eliminado correctamente";
             }
             catch (Exception ex)
             {
-                return "Error al eliminar Proveedor: " + ex.Message;
+                string detalle = ex.InnerException?.InnerException?.Message ?? ex.InnerException?.Message ?? ex.Message;
+                return "Error al eliminar proveedor: " + detalle;
             }
         }
+
     }
 }

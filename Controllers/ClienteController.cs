@@ -1,4 +1,5 @@
 ﻿using NATILLERA.Clases;
+using NATILLERA.Entidades;
 using NATILLERA.Models;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,6 @@ namespace NATILLERA.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("api/cliente")]
-
     public class ClienteController : ApiController
     {
         [HttpPost]
@@ -33,7 +33,7 @@ namespace NATILLERA.Controllers
         [HttpGet]
         [Route("ConsultarTodos")]
 
-        public List<tblCliente> ConsultarTodos()
+        public List<ClienteDto> ConsultarTodos()
 
         {
             clsCliente objCliente = new clsCliente();  // ✅
